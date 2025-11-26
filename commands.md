@@ -1,0 +1,9 @@
+terraform output # To see output by outputs.tf 
+terraform plan -var instance_type=t3.small # To plan with variable configured
+terraform show # To see workspace's entire state 
+terraform state list # To list the resources and data sources in your Terraform workspace's state
+terraform apply # To apply Terraform config
+terraform plan # Dry-run
+terraform validate # To identify errors in your configuration
+terraform init # To downloads and installs the providers defined 
+terraform fmt # To reformats all configuration files 
