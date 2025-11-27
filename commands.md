@@ -1,3 +1,4 @@
+terraform destroy # Delete deployment 
 terraform output # To see output by outputs.tf 
 terraform plan -var instance_type=t3.small # To plan with variable configured
 terraform show # To see workspace's entire state 

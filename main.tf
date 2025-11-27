@@ -3,7 +3,7 @@ provider "aws" { #block configures options that apply to all resources managed b
   region = "ap-south-1"
 }
 data "aws_ami" "ubuntu" { #Data source type and data source name.
-  most_recent = true #argument ensures that the data source returns the most recent AMI that matches the filter criteria.
+  most_recent = true      #argument ensures that the data source returns the most recent AMI that matches the filter criteria.
 
   filter { #filter block defines criteria to narrow down the search for the AMI.
     name   = "name"
@@ -17,7 +17,24 @@ resource "aws_instance" "app_server" { # resource type and resource name.
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
+  vpc_security_group_ids = [module.vpc.default_security_group_id]
+  subnet_id              = module.vpc.private_subnets[0]
   tags = {
     Name = var.instance_name
   }
+}
+
+module "vpc" {
+
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "5.19.0"
+
+  name = "example-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["ap-south-1a", "ap-south-1b"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+  public_subnets  = ["10.0.101.0/24"]
+
+  enable_dns_hostnames = true
 }
