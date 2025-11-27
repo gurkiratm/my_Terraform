@@ -1,9 +1,9 @@
-terraform {                     #The terraform block configures Terraform itself
+terraform { #The terraform block configures Terraform itself
   cloud {
     organization = "first-terraform-organization" #specifies the name of the organization in Terraform Cloud where your configuration's state files will be stored.
-    workspaces {                                 #The workspaces block defines which workspace within the organization to use.
-      name = "learn-terraform-aws-get-started"         #specifies the name of the workspace
-      project = "Learn-Terraform"                     #specifies the project within the workspace
+    workspaces {                                  #The workspaces block defines which workspace within the organization to use.
+      name    = "learn-terraform-aws-get-started" #specifies the name of the workspace
+      project = "Learn-Terraform"                 #specifies the project within the workspace
     }
   }
   required_providers {          #lets you set version constraints on the providers your configuration uses.
