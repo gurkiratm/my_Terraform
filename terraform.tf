@@ -1,4 +1,11 @@
 terraform {                     #The terraform block configures Terraform itself
+  cloud {
+    organization = "first-terraform-organization" #specifies the name of the organization in Terraform Cloud where your configuration's state files will be stored.
+    workspaces {                                 #The workspaces block defines which workspace within the organization to use.
+      name = "learn-terraform-aws-get-started"         #specifies the name of the workspace
+      project = "Learn-Terraform"                     #specifies the project within the workspace
+    }
+  }
   required_providers {          #lets you set version constraints on the providers your configuration uses.
     aws = {                     #This name is just a label for provider configuration. #it must match the name used in the provider block.
       source  = "hashicorp/aws" #argument specifies a hostname (optional), namespace, and provider name. #shortened form of registry.terraform.io/hashicorp/aws, the address of the provider in the Terraform Registry.
