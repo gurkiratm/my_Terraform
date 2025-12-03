@@ -18,7 +18,7 @@ resource "aws_instance" "app_server" { # resource type and resource name.
   instance_type = var.instance_type
 
   vpc_security_group_ids = [module.vpc.default_security_group_id]
-  subnet_id              = module.vpc.public_subnets[0]
+  subnet_id              = module.vpc.public_subnets[0] #This will only add route to IGW but not assign public IP to EC2
   #associate_public_ip_address = true
   tags = {
     Name = var.instance_name
