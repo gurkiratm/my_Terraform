@@ -1,6 +1,7 @@
 # Local .terraform directories
 .terraform/
 .terraform.lock.hcl
+.terraform.tfstate.*
 
 # State files
 terraform.tfstate
@@ -12,3 +13,5 @@ crash.log
 # Sensitive variables
 *.tfvars
 *.tfvars.json
+
+variables.tf
